@@ -1,4 +1,4 @@
-# ml_toxic_comments
-An app for identifying toxic comments
-11111
-Add info pls
+# Практическое задание №1 
+- An app for identifying toxic comments
+
+Our command has used 'rubertconv_toxic_clf by IlyaGusev
