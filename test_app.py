@@ -5,9 +5,9 @@ import json
 client = TestClient(main_api.app)
 
 def test_response():
- '''
+  '''
     check server accessibility
- '''
+  '''
   response = client.get('/')
   assert response.status_code == 200
   assert response.json() == {'message': "Greats! It's work!"}
