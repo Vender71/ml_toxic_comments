@@ -5,6 +5,9 @@ from transformers import pipeline, BertTokenizer, BertForSequenceClassification
 import numpy as np
 import torch
 
+from sys import platform
+import uvicorn
+
 
 class Message(BaseModel):
     text: str
@@ -54,7 +57,15 @@ def check_message(message: Message):
 @app.post("/check/messages/")
 def check_message(messages: List[Message]):
     res_arr = list()
-    for message in messages.text:
+    for message in messages:
         res_arr.append(handler_message(message))
         
     return res_arr
+
+# run worker
+if __name__ == "__main__":
+    uvicorn.run(app,
+                port=5049 if platform == 'win32' else 8000,
+                host="127.0.0.1" if platform == 'win32' else '0.0.0.0',
+                workers=1,
+                log_level='info')
