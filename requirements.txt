@@ -1,0 +1,7 @@
+﻿fastapi==0.88.0
+numpy==1.23.4
+pydantic==1.10.2
+streamlit==1.11.0
+torch==1.13.0
+transformers==4.24.0
+uvicorn==0.20.0
