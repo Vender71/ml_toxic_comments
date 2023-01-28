@@ -5,7 +5,7 @@ Our command has used 'SkolkovoInstitute/russian_toxicity_classifier' - Bert-base
 A comment is given at the input, the degree of toxicity and neutrality is at the output.
 
 The application is implemented using FastApi.
-Link: http://158.160.44.123:8000/docs
+Link: http://130.193.49.237:8000/docs
 
 Team:
 Edward Tuomas,
