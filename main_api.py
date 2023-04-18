@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from typing import List
 from pydantic import BaseModel
-from transformers import pipeline, BertTokenizer, BertForSequenceClassification
+from transformers import BertTokenizer, BertForSequenceClassification
 import numpy as np
 import torch
 
@@ -13,7 +13,7 @@ class Message(BaseModel):
     text: str
     mode: str
 
-
+        
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum()
