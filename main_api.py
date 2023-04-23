@@ -13,12 +13,12 @@ class Message(BaseModel):
     text: str
     mode: str
 
-        
+# Преобразование выходных логарифмов модели в оценку вероятности.        
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum()
 
-
+# Функция принимает сообщение в качестве входных данных и на основе BERT возвращает степень токсичности
 def handler_message(message):
     if message.mode in ["all", "neutral", "toxic"]:
         mode = message.mode
@@ -51,17 +51,17 @@ model = BertForSequenceClassification.from_pretrained(
     "SkolkovoInstitute/russian_toxicity_classifier"
 )
 
-
+# Функция словарь с сообщением, указывающий на работоспособность.
 @app.get("/")
 def root():
     return {"message": "Greats! It's work!"}
 
-
+# Эта функция принимает одно входное сообщение для классификации токсичности сообщения.
 @app.post("/check/message/")
 def check_message(message: Message):
     return handler_message(message)
 
-
+# Функция  обрабатывает сообщение, вызывая функцию handler_message и возвращает результат для каждого из них.
 @app.post("/check/messages/")
 def check_message(messages: List[Message]):
     message_results  = list()
