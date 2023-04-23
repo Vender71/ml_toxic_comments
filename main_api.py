@@ -64,11 +64,11 @@ def check_message(message: Message):
 
 @app.post("/check/messages/")
 def check_message(messages: List[Message]):
-    res_arr = list()
+    message_results  = list()
     for message in messages:
-        res_arr.append(handler_message(message))
+        message_results .append(handler_message(message))
 
-    return res_arr
+    return message_results 
 
 
 # run worker
