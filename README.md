@@ -9,7 +9,7 @@ Output: the degree of toxicity and neutrality of the comment
 
 ## Installation
 
-- Clone the repository: "git clone https://github.com/<username>/<repository>.git"
+- Clone the repository: "git clone git@github.com:Vender71/ml_toxic_comments.git"
 
 - Install the required packages: pip install -r requirements.txt"
 
