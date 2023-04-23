@@ -8,7 +8,7 @@ import torch
 from sys import platform
 import uvicorn
 
-
+#tests
 class Message(BaseModel):
     text: str
     mode: str
