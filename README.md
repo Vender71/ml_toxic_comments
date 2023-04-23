@@ -13,6 +13,10 @@ Output: the degree of toxicity and neutrality of the comment
 
 - Install the required packages: pip install -r requirements.txt"
 
+## Testing
+
+- Run "python -m pytest" in the console while in the project directory.
+
 ## Team:
 - Stanislav Borisenko
 - Vladislav Onufrienko
