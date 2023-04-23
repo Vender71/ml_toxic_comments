@@ -1,14 +1,19 @@
-An app for identifying toxic comments
+# Russian Toxicity Classifier
 
-Our command has used 'SkolkovoInstitute/russian_toxicity_classifier' - Bert-based classifier (finetuned from Conversational Rubert) trained on merge of Russian Language Toxic Comments dataset collected from 2ch.hk and Toxic Russian Comments dataset collected from ok.ru.
+This is an app for identifying toxic comments in Russian. The app uses a Bart-based classifier that was fine-tuned based on colloquial Rubert. The model was trained on a dataset of toxic comments collected from 2ch.hk and a dataset of poisonous comments collected from ok.ru.
 
-A comment is given at the input, the degree of toxicity and neutrality is at the output.
+## Features
 
-The application is implemented using FastApi.
-Link: http://130.193.49.237:8000/docs
+Input: a comment in Russian
+Output: the degree of toxicity and neutrality of the comment
 
-Team:
-Edward Tuomas,
-Stanislav Borisenko,
-Vladislav Onufrienko,
-Vera Tsymbalova.
+## Installation
+
+- Clone the repository: "git clone https://github.com/<username>/<repository>.git"
+
+- Install the required packages: pip install -r requirements.txt"
+
+## Team:
+- Stanislav Borisenko
+- Vladislav Onufrienko
+- Vera Tsymbalova
