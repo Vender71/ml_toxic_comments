@@ -1,9 +1,11 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from pydantic import BaseModel
 from transformers import BertTokenizer, BertForSequenceClassification
 import numpy as np
 import torch
+import time
 
 from sys import platform
 import uvicorn
@@ -26,9 +28,11 @@ def handler_message(message):
         mode = "all"
 
     batch = tokenizer.encode(message.text, return_tensors="pt")
+    start_time = time.time()
     with torch.no_grad():
         outputs = model(batch)
         outputs = outputs.logits
+    end_time = time.time()
     predictions = softmax(outputs.cpu().detach().numpy())
     predictions = predictions.flatten()
 
@@ -43,6 +47,21 @@ def handler_message(message):
 
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://127.0.0.1",
+    "http://127.0.0.1:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # load tokenizer and model weights
 tokenizer = BertTokenizer.from_pretrained(
     "SkolkovoInstitute/russian_toxicity_classifier"
