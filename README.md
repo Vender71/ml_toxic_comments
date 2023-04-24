@@ -21,6 +21,5 @@ Output: the degree of toxicity and neutrality of the comment
 - Run "python -m pytest" in the console while in the project directory.
 
 ## Team:
-- Stanislav Borisenko
-- Vladislav Onufrienko
-- Vera Tsymbalova
+
+This app was developed by Stanislav Borisenko, Vladislav Onufrienko, and Vera Tsymbalova. If you have any questions or issues with the app, please feel free to contact us.
