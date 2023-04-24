@@ -13,6 +13,4 @@ Output: the degree of toxicity and neutrality of the comment
 
 - Install the required packages: pip install -r requirements.txt"
 
-##Team
-
-This app was developed by Stanislav Borisenko, Vladislav Onufrienko, and Vera Tsymbalova. If you have any questions or issues with the app, please feel free to contact us.
+## This app was developed by Stanislav Borisenko, Vladislav Onufrienko, and Vera Tsymbalova. If you have any questions or issues with the app, please feel free to contact us.
