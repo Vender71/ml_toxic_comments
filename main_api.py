@@ -1,12 +1,11 @@
+from typing import List
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from typing import List
 from pydantic import BaseModel
 from transformers import BertTokenizer, BertForSequenceClassification
 import numpy as np
 import torch
 import time
-
 from sys import platform
 import uvicorn
 
@@ -15,14 +14,10 @@ class Message(BaseModel):
     text: str
     mode: str
 
-# Преобразование выходных логарифмов модели в оценку вероятности.
-
 
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum()
-
-# Функция возвращает степень токсичности
 
 
 def handler_message(message):
@@ -50,7 +45,6 @@ def handler_message(message):
     return result
 
 
-
 app = FastAPI()
 
 origins = [
@@ -67,15 +61,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# load tokenizer and model weights
+
 tokenizer = BertTokenizer.from_pretrained(
     "SkolkovoInstitute/russian_toxicity_classifier"
 )
 model = BertForSequenceClassification.from_pretrained(
     "SkolkovoInstitute/russian_toxicity_classifier"
 )
-
-# Функция словарь с сообщением, указывающий на работоспособность.
 
 
 @app.get("/")
@@ -89,24 +81,20 @@ def check_message(text):
     return handler_message(message)
 
 
-# Эта функция принимает одно входное сообщение для классификации токсичности сообщения.
 @app.post("/check/message/")
 def check_message(message: Message):
     return handler_message(message)
 
-# Функция  обрабатывает сообщение, вызывая функцию handler_message и возвращает результат для каждого из них.
-
 
 @app.post("/check/messages/")
 def check_message(messages: List[Message]):
-    message_results  = list()
+    message_results = list()
     for message in messages:
-        message_results .append(handler_message(message))
+        message_results.append(handler_message(message))
 
-    return message_results 
+    return message_results
 
 
-# run worker
 if __name__ == "__main__":
     uvicorn.run(
         app,
