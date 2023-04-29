@@ -15,16 +15,16 @@ class Message(BaseModel):
     text: str
     mode: str
 
-# Преобразование выходных логарифмов модели в оценку вероятности.        
-def softmax(x):
-    e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum()
+# Преобразование выходных логарифмов модели в оценку вероятности.       
+  def softmax(x):
+      e_x = np.exp(x - np.max(x))
+      return e_x / e_x.sum()
 
 # Функция принимает сообщение в качестве входных данных и на основе BERT возвращает степень токсичности
-def handler_message(message):
-    if message.mode in ["all", "neutral", "toxic"]:
-        mode = message.mode
-    else:
+  def handler_message(message):
+      if message.mode in ["all", "neutral", "toxic"]:
+          mode = message.mode
+      else:
         mode = "all"
 
     batch = tokenizer.encode(message.text, return_tensors="pt")
