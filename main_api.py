@@ -76,18 +76,18 @@ def root():
 
 
 @app.get("/check/message/{text}/")
-def check_message(text):
+def get_check_message(text):
     message = Message(text=text, mode="all")
     return handler_message(message)
 
 
 @app.post("/check/message/")
-def check_message(message: Message):
+def post_check_message(message: Message):
     return handler_message(message)
 
 
 @app.post("/check/messages/")
-def check_message(messages: List[Message]):
+def post_check_messages(messages: List[Message]):
     message_results = list()
     for message in messages:
         message_results.append(handler_message(message))
