@@ -10,6 +10,10 @@ This is an app for identifying toxic comments in Russian. The app uses a Bart-ba
 Input: a comment in Russian
 Output: the degree of toxicity and neutrality of the comment
 
+## UI
+
+The user interface is made using the ExtJS JavaScript library version 4.2.
+
 ## Installation
 
 - Clone the repository: "git clone git@github.com:Vender71/ml_toxic_comments.git"
