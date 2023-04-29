@@ -50,6 +50,7 @@ def handler_message(message):
     return result
 
 
+
 app = FastAPI()
 
 origins = [
@@ -94,6 +95,8 @@ def check_message(message: Message):
     return handler_message(message)
 
 # Функция  обрабатывает сообщение, вызывая функцию handler_message и возвращает результат для каждого из них.
+
+
 @app.post("/check/messages/")
 def check_message(messages: List[Message]):
     message_results  = list()
