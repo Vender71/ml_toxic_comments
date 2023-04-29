@@ -5,7 +5,6 @@ from pydantic import BaseModel
 from transformers import BertTokenizer, BertForSequenceClassification
 import numpy as np
 import torch
-import time
 from sys import platform
 import uvicorn
 
