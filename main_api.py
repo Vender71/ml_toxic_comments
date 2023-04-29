@@ -15,14 +15,14 @@ class Message(BaseModel):
     text: str
     mode: str
 
-# Преобразование выходных логарифмов модели в оценку вероятности.       
+# Преобразование выходных логарифмов модели в оценку вероятности.
 
 
 def softmax(x):
-        e_x = np.exp(x - np.max(x))
+    e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum()
 
-# Функция принимает сообщение в качестве входных данных и на основе BERT возвращает степень токсичности
+# Функция возвращает степень токсичности
 
 
 def handler_message(message):
@@ -75,14 +75,18 @@ model = BertForSequenceClassification.from_pretrained(
 )
 
 # Функция словарь с сообщением, указывающий на работоспособность.
+
+
 @app.get("/")
 def root():
     return {"message": "Greats! It's work!"}
+
 
 @app.get("/check/message/{text}/")
 def check_message(text):
     message = Message(text=text, mode="all")
     return handler_message(message)
+
 
 # Эта функция принимает одно входное сообщение для классификации токсичности сообщения.
 @app.post("/check/message/")
