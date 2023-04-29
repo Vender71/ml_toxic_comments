@@ -27,11 +27,9 @@ def handler_message(message):
         mode = "all"
 
     batch = tokenizer.encode(message.text, return_tensors="pt")
-    start_time = time.time()
     with torch.no_grad():
         outputs = model(batch)
         outputs = outputs.logits
-    end_time = time.time()
     predictions = softmax(outputs.cpu().detach().numpy())
     predictions = predictions.flatten()
 
